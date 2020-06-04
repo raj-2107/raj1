@@ -3,7 +3,7 @@ pipeline {
  stages {
  stage('checkout') {
     steps {
-       git branch: 'master', url: 'https://github.com/raj-2107/raj.git'
+       git branch: 'master', url: 'https://github.com/raj-2107/raj1.git'
     }
   }
  stage('environment') {
