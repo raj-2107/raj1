@@ -15,8 +15,9 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
   source_dest_check = false
   instance_type = "t2.micro"
+  user_data = file("user_data.sh")
   
-    connection {
+/*    connection {
     type        = "ssh"
     user        = "ec2-user"
     private_key = "/home/ec2-user/raj_jen.pem"
@@ -28,6 +29,7 @@ resource "aws_instance" "web" {
       "sudo amazon-linux-extras install ansible2 -y"
     ]
   }
+*/
 }
 
 
