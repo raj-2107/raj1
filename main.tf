@@ -19,7 +19,7 @@ resource "aws_instance" "web" {
     connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("/home/ec2-user/raj_jen.pem")
+    private_key = "/home/ec2-user/raj_jen.pem"
     host        = self.public_ip
   }
     provisioner "remote-exec" {
