@@ -9,6 +9,11 @@ provider "aws" {
 #}
 
 ###  EC2 instance
+
+data "template_file" "user_data" {
+  template = "${file("user_data.sh")}"
+}
+
 resource "aws_instance" "web" {
   ami               = lookup(var.amis,var.region)
   key_name               = var.key_name
