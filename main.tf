@@ -67,7 +67,12 @@ resource "aws_launch_configuration" "example" {
   instance_type          = "t2.micro"
   security_groups        = ["${aws_security_group.instance.id}"]
   key_name               = var.key_name
-  user_data = <<-EOF
+ /* data "template_file" "user_data" {
+  template = "${file("user_data.sh")}"
+}
+*/
+  user_data = file("user_data.sh")
+ /* user_data = <<-EOF
               #!/bin/bash
               echo "Hello, Team" > index.html
               nohup busybox httpd -f -p 9090 &
@@ -75,6 +80,7 @@ resource "aws_launch_configuration" "example" {
   lifecycle {
     create_before_destroy = true
   }
+*/
 }
 
 ## AutoScaling Group
